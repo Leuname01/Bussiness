@@ -1,29 +1,30 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const HelloWorld = ({ name, updateName }) => (
-  <div>
-    <h3>
-      Hello, {name}!
-    </h3>
-    <hr />
-    <form >
-      <label htmlFor="name">
-        Say hello to:
-      </label>
-      <input
-        id="name"
-        type="text"
-        value={name}
-        onChange={(e) => updateName(e.target.value)}
-      />
-    </form>
-  </div>
-);
+export default  class HelloWorld extends React.Component {
 
-HelloWorld.propTypes = {
-  name: PropTypes.string.isRequired,
-  updateName: PropTypes.func.isRequired,
-};
+  constructor(props){
+    super(props)
 
-export default HelloWorld;
+    this.state = {
+      name: props.name
+    }
+
+    this.updateName = this.updateName.bind(this)
+  }
+
+  updateName(event){
+    this.setState({name: event.target.value})
+  }
+
+  render(){
+    return(
+      <div>
+        <h3>Hello, {this.state.name}!</h3><hr />
+        <form>
+          <label htmlFor="name"> Say hello to: </label>
+          <input className="form-control" type="text" placeholder={this.state.name} onChange={this.updateName}/>
+        </form>
+      </div>)
+  }
+}
