@@ -66,3 +66,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Manual added rubygems
 
 gem 'react_on_rails', '11.1.2'         # prefer exact gem version to match npm version
+
+gem 'mini_racer', platforms: :ruby
